@@ -141,15 +141,22 @@ function move(drection)
 }
 
 function apple(apple_id)
-{
+{	
 	var temp_left=Math.floor(Math.random()*32)*35+"px";
 	var temp_top=Math.floor(Math.random()*18)*35+"px";
+	for (var i=1;i<=status_number;i++)
+	{
+		while (temp_left==eval('status'+i).style.left && temp_top==eval('status'+i).style.top)
+		{	
+			temp_left=Math.floor(Math.random()*32)*35+"px";
+			temp_top=Math.floor(Math.random()*18)*35+"px";
+		}
+	}
 	document.getElementById(apple_id).style.left=temp_left;
 	document.getElementById(apple_id).style.top=temp_top;
 	var numbers=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
 	if (Math.floor(Math.random()*10)==2 && body_number>4)
 	{
-		del=1;
 		apple_order=parseInt(apple_id.substr(6,1));
 		random=Math.floor(Math.random()*(body_number-4)+5);
 		document.getElementById(apple_id).style.backgroundColor=document.getElementById("body"+random).style.backgroundColor;
