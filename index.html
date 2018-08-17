@@ -8,6 +8,16 @@
 	<script>
 		$(document).ready(function(){
 			$("#apple").hide();
+			$(".body").hide();
+			$(".head").hide();
+			if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) 
+			{
+				$("#control").show();
+			}
+			else
+			{	
+				$("#control").hide();
+			}
 		})
 
 		function charge()
@@ -50,7 +60,7 @@
 					move_permission=0;
 				}
 			}
-			if (parseInt(body1.style.left)<0 || parseInt(body1.style.left)>=1100 || parseInt(body1.style.top)<0 || parseInt(body1.style.top)>=500)
+			if (parseInt(body1.style.left)<0 || parseInt(body1.style.left)>=1120 || parseInt(body1.style.top)<0 || parseInt(body1.style.top)>=630)
 			{
 				over();
 				move_permission=0;
@@ -59,11 +69,18 @@
 
 		function begin()
 		{
-			$("#apple").show();
+			setTimeout(function(){
+				$("#play").hide();
+				$("#apple").fadeIn();
+				$(".body").show();
+				$(".head").show();				
+			},500)
 			$("#play").css({
-				"height":"0px",
+				"height":"35px",
+				"borderRadius":"18px 0px 0px 18px",
 				"color":"#00cc47",
 				"fontSize":"0px",
+				"transform":"translate(-50%,0px)"
 			})
 		}
 
@@ -87,18 +104,17 @@
 </head>
 <body style="background-color:#eee">
 	<div id="canvas" class="canvas">
-		<div id="apple" class="apple" style="left:20px;top:20px"></div>
-		<div id="body1" class="head" style="left:500px;top:240px"></div>
-		<div id="body2" class="body" style="left:520px;top:240px"></div>
-		<div id="body3" class="body" style="left:540px;top:240px"></div>
-		<div id="body4" class="body" style="left:560px;top:240px"></div>
-		<div id="body5" class="body" style="left:580px;top:240px"></div>		
+		<div id="apple" class="apple" style="left:35px;top:35px"></div>
+		<div id="body1" class="head" style="left:490px;top:315px"></div>
+		<div id="body2" class="body" style="left:525px;top:315px"></div>
+		<div id="body3" class="body" style="left:560px;top:315px"></div>
+		<div id="body4" class="body" style="left:595px;top:315px"></div>		
 	</div>
 	<div id="play" class="play" onclick="begin()">
-			<p id="text" style="position:absolute;top:-5px;left:50%;transform:translate(-50%,-50%);">PLAY</p>
+		<p id="text" style="position:absolute;top:-5px;left:50%;transform:translate(-50%,-50%);">PLAY</p>
 	</div>
 	<div style="position:fixed;top:20px;left:20px;width:100px;height:100px;font-size:60px" id="body_numbers">5</div>
-	<div style="position:fixed;bottom:100px;right:100px;width:200px;height:200px;transform:rotate(45deg);opacity:0.2">
+	<div id="control" style="position:fixed;bottom:100px;right:100px;width:200px;height:200px;transform:rotate(45deg);opacity:0.2">
 		<div style="position:absolute;left:0px;top:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=0;i_top=1;i_right=0;i_bottom=0;if (drect!='top'){loop('top')}"></div>
 		<div style="position:absolute;left:0px;bottom:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=1;i_top=0;i_right=0;i_bottom=0;if (drect!='left'){loop('left')}"></div>
 		<div style="position:absolute;right:0px;bottom:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=0;i_top=0;i_right=0;i_bottom=1;if (drect!='bottom'){loop('bottom')}"></div>
