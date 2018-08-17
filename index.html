@@ -80,13 +80,12 @@
 				"borderRadius":"18px 0px 0px 18px",
 				"color":"#00cc47",
 				"fontSize":"0px",
-				"transform":"translate(-50%,0px)"
 			})
 		}
 
 		function over()
 		{
-			
+			$("#play").show();
 			$(".body").hide();
 			$(".head").hide();
 			$("#apple").hide();
@@ -94,6 +93,7 @@
 				"height":"50px",
 				"color":"#fff",
 				"fontSize":"30px",
+				"borderRadius":"18px",
 			})
 			$("#text").text("LOSE")
 			$("#play").click(function(){
