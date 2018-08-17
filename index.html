@@ -1,0 +1,102 @@
+<html>
+<title>snake</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+	<script src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#apple").hide();
+		})
+
+		function charge()
+		{
+			if (body1.style.left==document.getElementById("apple").style.left && body1.style.top==document.getElementById("apple").style.top)
+			{
+				var temp_left=eval("body"+body_number).style.left;
+				var temp_top=eval("body"+body_number).style.top;
+				body_number++;
+				$("#canvas").append("<div id=\"body"+body_number+"\" class=\"body\" style=\"left:"+temp_left+";top:"+temp_top+";background-color:"+document.getElementById("apple").style.backgroundColor+"\"></div>");
+				if (del==1)
+				{
+					var i0=random;
+					setTimeout(function(){
+						for (var i=i0;i<=body_number;i++)
+						{
+							var i1=i-i0+1+status_number;
+							eval("$('#body"+i+"').attr('id','status"+i1+"')");
+						}
+						status_number+=(body_number-i0+1);
+						body_number=i0-1;
+						del=0;
+					},1000)
+				}
+				apple();
+			}
+			for (var i=2;i<=body_number;i++)
+			{
+				if (body1.style.left==eval("body"+i).style.left && body1.style.top==eval("body"+i).style.top)
+				{
+					over();
+					move_permission=0;
+				}
+			}
+			for (var i=1;i<=status_number;i++)
+			{
+				if (body1.style.left==eval("status"+i).style.left && body1.style.top==eval("status"+i).style.top)
+				{
+					over();
+					move_permission=0;
+				}
+			}
+			if (parseInt(body1.style.left)<0 || parseInt(body1.style.left)>=1100 || parseInt(body1.style.top)<0 || parseInt(body1.style.top)>=500)
+			{
+				over();
+				move_permission=0;
+			}
+		}
+
+		function begin()
+		{
+			$("#apple").show();
+			$("#play").css({
+				"height":"0px",
+				"color":"#00cc47",
+				"fontSize":"0px",
+			})
+		}
+
+		function over()
+		{
+			
+			$(".body").hide();
+			$(".head").hide();
+			$("#apple").hide();
+			$("#play").css({
+				"height":"50px",
+				"color":"#fff",
+				"fontSize":"30px",
+			})
+			$("#text").text("LOSE")
+			$("#play").click(function(){
+				location.reload();
+			})
+		}
+	</script>
+</head>
+<body style="background-color:#eee">
+	<div id="canvas" class="canvas">
+		<div id="apple" class="apple" style="left:20px;top:20px"></div>
+		<div id="body1" class="head" style="left:500px;top:240px"></div>
+		<div id="body2" class="body" style="left:520px;top:240px"></div>
+		<div id="body3" class="body" style="left:540px;top:240px"></div>
+		<div id="body4" class="body" style="left:560px;top:240px"></div>
+		<div id="body5" class="body" style="left:580px;top:240px"></div>		
+	</div>
+	<div id="play" class="play" onclick="begin()">
+			<p id="text" style="position:absolute;top:-5px;left:50%;transform:translate(-50%,-50%);">PLAY</p>
+	</div>
+	<div style="position:fixed;top:20px;left:20px;width:100px;height:100px;font-size:60px" id="body_numbers">5</div>	
+</body>
+</html>
