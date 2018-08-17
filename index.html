@@ -7,7 +7,7 @@
 	<script src="jquery.js"></script>
 	<script>
 		$(document).ready(function(){
-			$("#apple").hide();
+			$(".apple").hide();
 			$(".body").hide();
 			$(".head").hide();
 			if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) 
@@ -22,27 +22,33 @@
 
 		function charge()
 		{
-			if (body1.style.left==document.getElementById("apple").style.left && body1.style.top==document.getElementById("apple").style.top)
+			for (var k=1;k<=3;k++)
 			{
-				var temp_left=eval("body"+body_number).style.left;
-				var temp_top=eval("body"+body_number).style.top;
-				body_number++;
-				$("#canvas").append("<div id=\"body"+body_number+"\" class=\"body\" style=\"left:"+temp_left+";top:"+temp_top+";background-color:"+document.getElementById("apple").style.backgroundColor+"\"></div>");
-				if (del==1)
+				temp_apple="apple"+k;
+				if (body1.style.left==document.getElementById(temp_apple).style.left && body1.style.top==document.getElementById(temp_apple).style.top)
 				{
-					var i0=random;
-					setTimeout(function(){
-						for (var i=i0;i<=body_number;i++)
+					var temp_left=eval("body"+body_number).style.left;
+					var temp_top=eval("body"+body_number).style.top;
+					for (var m=5;m<=body_number;m++)
+					{
+						if (document.getElementById(temp_apple).style.backgroundColor==document.getElementById(("body"+m)).style.backgroundColor)
 						{
-							var i1=i-i0+1+status_number;
-							eval("$('#body"+i+"').attr('id','status"+i1+"')");
+							var temp_m=m;
+							setTimeout(function(){
+								for (var i=temp_m;i<=body_number;i++)
+								{
+									var i1=i-temp_m+1+status_number;
+									eval("$('#body"+i+"').attr('id','status"+i1+"')");
+								}
+								status_number+=(body_number-temp_m+1);
+								body_number=temp_m-1;
+							},1000)
 						}
-						status_number+=(body_number-i0+1);
-						body_number=i0-1;
-						del=0;
-					},1000)
+					}
+					body_number++;
+					$("#canvas").append("<div id=\"body"+body_number+"\" class=\"body\" style=\"left:"+temp_left+";top:"+temp_top+";background-color:"+document.getElementById(temp_apple).style.backgroundColor+"\"></div>");
+					apple(temp_apple);
 				}
-				apple();
 			}
 			for (var i=2;i<=body_number;i++)
 			{
@@ -71,7 +77,7 @@
 		{
 			setTimeout(function(){
 				$("#play").hide();
-				$("#apple").fadeIn();
+				$(".apple").fadeIn();
 				$(".body").show();
 				$(".head").show();				
 			},500)
@@ -88,7 +94,7 @@
 			$("#play").show();
 			$(".body").hide();
 			$(".head").hide();
-			$("#apple").hide();
+			$(".apple").hide();
 			$("#play").css({
 				"height":"50px",
 				"color":"#fff",
@@ -104,7 +110,9 @@
 </head>
 <body style="background-color:#eee">
 	<div id="canvas" class="canvas">
-		<div id="apple" class="apple" style="left:35px;top:35px"></div>
+		<div id="apple1" class="apple" style="left:35px;top:35px"></div>
+		<div id="apple2" class="apple" style="left:35px;top:35px"></div>
+		<div id="apple3" class="apple" style="left:35px;top:35px"></div>
 		<div id="body1" class="head" style="left:490px;top:315px"></div>
 		<div id="body2" class="body" style="left:525px;top:315px"></div>
 		<div id="body3" class="body" style="left:560px;top:315px"></div>
@@ -119,6 +127,6 @@
 		<div style="position:absolute;left:0px;bottom:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=1;i_top=0;i_right=0;i_bottom=0;if (drect!='left'){loop('left')}"></div>
 		<div style="position:absolute;right:0px;bottom:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=0;i_top=0;i_right=0;i_bottom=1;if (drect!='bottom'){loop('bottom')}"></div>
 		<div style="position:absolute;right:0px;top:0px;width:90px;height:90px;background-color:#000;border:5px solid #eee;border-radius:15px" onclick="i_left=0;i_top=0;i_right=1;i_bottom=0;if (drect!='right'){loop('right')}"></div>
-	</div>	
+	</div>
 </body>
 </html>
