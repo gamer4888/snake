@@ -132,7 +132,7 @@ function apple()
 	document.getElementById("apple").style.left=temp_left;
 	document.getElementById("apple").style.top=temp_top;
 	var number_16=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-	if (Math.floor(Math.random()*3)==2)
+	if (Math.floor(Math.random()*8)==2)
 	{
 		del=1;
 		random=Math.floor(Math.random()*(body_number-5)+6);
