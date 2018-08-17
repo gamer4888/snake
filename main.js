@@ -7,7 +7,7 @@ var i_top=0;
 var i_right=0;
 var i_bottom=0;
 
-var body_number=5;
+var body_number=4;
 var status_number=0;
 
 document.onkeydown=function(event)
@@ -72,27 +72,27 @@ function move(drection)
 		var temp_top="";
 		if (drection=="left")
 		{
-			body1.style.borderRadius="10px 0px 0px 10px";
-			var temp_left_2=(parseInt(body1.style.left)-20)+"px";
+			body1.style.borderRadius="18px 0px 0px 18px";
+			var temp_left_2=(parseInt(body1.style.left)-35)+"px";
 			var temp_top_2=body1.style.top;
 		}
 		if (drection=="right")
 		{
-			body1.style.borderRadius="0px 10px 10px 0px";
-			var temp_left_2=(parseInt(body1.style.left)+20)+"px";
+			body1.style.borderRadius="0px 18px 18px 0px";
+			var temp_left_2=(parseInt(body1.style.left)+35)+"px";
 			var temp_top_2=body1.style.top;
 		}
 		if (drection=="top")
 		{
-			body1.style.borderRadius="10px 10px 0px 0px";
+			body1.style.borderRadius="18px 18px 0px 0px";
 			var temp_left_2=body1.style.left;
-			var temp_top_2=(parseInt(body1.style.top)-20)+"px";
+			var temp_top_2=(parseInt(body1.style.top)-35)+"px";
 		}
 		if (drection=="bottom")
 		{
-			body1.style.borderRadius="0px 0px 10px 10px";
+			body1.style.borderRadius="0px 0px 18px 18px";
 			var temp_left_2=body1.style.left;
-			var temp_top_2=(parseInt(body1.style.top)+20)+"px";
+			var temp_top_2=(parseInt(body1.style.top)+35)+"px";
 		}
 		body_number_box();
 		for (var i=1;i<=body_number;i++)
@@ -127,15 +127,15 @@ function move(drection)
 
 function apple()
 {
-	var temp_left=Math.floor(Math.random()*55)*20+"px";
-	var temp_top=Math.floor(Math.random()*25)*20+"px";
+	var temp_left=Math.floor(Math.random()*32)*35+"px";
+	var temp_top=Math.floor(Math.random()*18)*35+"px";
 	document.getElementById("apple").style.left=temp_left;
 	document.getElementById("apple").style.top=temp_top;
 	var number_16=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-	if (Math.floor(Math.random()*8)==2)
+	if (Math.floor(Math.random()*10)==2)
 	{
 		del=1;
-		random=Math.floor(Math.random()*(body_number-5)+6);
+		random=Math.floor(Math.random()*(body_number-4)+5);
 		document.getElementById("apple").style.backgroundColor=document.getElementById("body"+random).style.backgroundColor;
 	}
 	else
