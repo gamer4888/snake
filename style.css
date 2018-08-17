@@ -1,0 +1,64 @@
+.canvas
+{
+	position:fixed;
+	width:1100px;
+	height:500px;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+	background-color:#fff;
+	z-index:-1;
+	border-radius:10px;
+	overflow:hidden;
+}
+
+.head
+{
+	position:absolute;
+	width:20px;
+	height:20px;
+	background-color:#00CC47;
+	z-index:1;
+	transition:all 1s;
+	-webkit-transition:all 1s;
+	border-radius:10px 0px 0px 10px;
+}
+
+.body
+{
+	width:20px;
+	height:20px;
+	background-color:#00CC47;
+	position:absolute;
+	transition:all 1s;
+	-webkit-transition:all 1s;
+}
+
+.apple
+{
+	width:20px;
+	height:20px;
+	background-color:red;
+	position:absolute;
+	border-radius:10px;
+}
+
+.play
+{
+	width:100px;
+	height:50px;
+	background-color:#00CC47;
+	color:#fff;
+	border-radius:10px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:translate(-50%,-50%);
+	transition:all 1s;
+	-webkit-transition:all 1s;
+	font-family:等线;
+	font-size:30px;
+	cursor:pointer;
+	z-index:2;
+	overflow:hidden;
+}
