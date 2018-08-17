@@ -1,5 +1,7 @@
 window.onload=(function(){
-	apple()
+	apple("apple1");
+	apple("apple2");
+	apple("apple3");
 })
 
 var i_left=0;
@@ -19,7 +21,10 @@ document.onkeydown=function(event)
         	i_top=0;
         	i_right=0;
         	i_bottom=0;
-        	if (drect!="left"){loop("left")}
+        	if (drect!="left")
+    		{
+    			loop("left")
+    		}
         } 
         if (e && e.keyCode==38)
         {
@@ -27,7 +32,10 @@ document.onkeydown=function(event)
         	i_top=1;
         	i_right=0;
         	i_bottom=0;
-        	if (drect!="top"){loop("top")}
+        	if (drect!="top")
+    		{
+    			loop("top")
+    		}
         }             
         if (e && e.keyCode==39)
         {
@@ -35,7 +43,10 @@ document.onkeydown=function(event)
         	i_top=0;
         	i_right=1;
         	i_bottom=0;
-        	if (drect!="right"){loop("right")}
+        	if (drect!="right")
+    		{
+    			loop("right")
+    		}
         }
 		if (e && e.keyCode==40)
 		{
@@ -43,7 +54,10 @@ document.onkeydown=function(event)
         	i_top=0;
         	i_right=0;
         	i_bottom=1;
-        	if (drect!="bottom"){loop("bottom")}
+        	if (drect!="bottom")
+    		{
+    			loop("bottom")
+    		}
         }
     };
 
@@ -52,6 +66,7 @@ var anti_drect="";
 var move_permission=1;
 var del=0;
 var random=0;
+var apple_order=0;
 
 function loop(drection)
 {
@@ -125,21 +140,23 @@ function move(drection)
 	}
 }
 
-function apple()
+function apple(apple_id)
 {
 	var temp_left=Math.floor(Math.random()*32)*35+"px";
 	var temp_top=Math.floor(Math.random()*18)*35+"px";
-	document.getElementById("apple").style.left=temp_left;
-	document.getElementById("apple").style.top=temp_top;
-	var number_16=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
-	if (Math.floor(Math.random()*10)==2)
+	document.getElementById(apple_id).style.left=temp_left;
+	document.getElementById(apple_id).style.top=temp_top;
+	var numbers=['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'];
+	if (Math.floor(Math.random()*10)==2 && body_number>4)
 	{
 		del=1;
+		apple_order=parseInt(apple_id.substr(6,1));
 		random=Math.floor(Math.random()*(body_number-4)+5);
-		document.getElementById("apple").style.backgroundColor=document.getElementById("body"+random).style.backgroundColor;
+		document.getElementById(apple_id).style.backgroundColor=document.getElementById("body"+random).style.backgroundColor;
 	}
 	else
-	{		document.getElementById("apple").style.backgroundColor="#"+number_16[Math.floor(Math.random()*16)]+number_16[Math.floor(Math.random()*16)]+number_16[Math.floor(Math.random()*16)];
+	{
+		document.getElementById(apple_id).style.backgroundColor="#"+numbers[Math.floor(Math.random()*16)]+numbers[Math.floor(Math.random()*16)]+numbers[Math.floor(Math.random()*16)]+numbers[Math.floor(Math.random()*16)]+numbers[Math.floor(Math.random()*16)]+numbers[Math.floor(Math.random()*16)];
 	}
 }
 
