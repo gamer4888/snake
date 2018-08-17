@@ -97,6 +97,12 @@
 	<div id="play" class="play" onclick="begin()">
 			<p id="text" style="position:absolute;top:-5px;left:50%;transform:translate(-50%,-50%);">PLAY</p>
 	</div>
-	<div style="position:fixed;top:20px;left:20px;width:100px;height:100px;font-size:60px" id="body_numbers">5</div>	
+	<div style="position:fixed;top:20px;left:20px;width:100px;height:100px;font-size:60px" id="body_numbers">5</div>
+	<div style="position:fixed;bottom:10px;left:10px;width:100px;height:100px;transform:rotate(45deg);">
+		<div style="position:absolute;left:0px;top:0px;width:30px;height:30px;background-color:#555;border:10px solid #eee" onclick="loop('top')"></div>
+		<div style="position:absolute;left:0px;bottom:0px;width:30px;height:30px;background-color:#555;border:10px solid #eee" onclick="loop('left')"></div>
+		<div style="position:absolute;right:0px;bottom:0px;width:30px;height:30px;background-color:#555;border:10px solid #eee" onclick="loop('bottom')"></div>
+		<div style="position:absolute;right:0px;top:0px;width:30px;height:30px;background-color:#555;border:10px solid #eee" onclick="loop('right')"></div>
+	</div>	
 </body>
 </html>
